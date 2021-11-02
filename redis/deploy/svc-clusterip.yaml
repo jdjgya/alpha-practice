@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cacher
+  labels:
+    app: redis-cacher
+spec:
+  ports:
+  - name: redis-client-port
+    protocol: "TCP"
+    port: 6379
+    targetPort: 6379
+  selector:
+    app: redis-cacher

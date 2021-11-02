@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-cacher
+data:
+  redis.conf: |
+    appendonly yes
+    dir /var/lib/redis/data
+
+    cluster-enabled yes
+    cluster-config-file /var/lib/redis/nodes.conf
+
+    maxmemory 1000mb
+    maxmemory-policy allkeys-lru
+    maxmemory-samples 5
+
+    port 6379
